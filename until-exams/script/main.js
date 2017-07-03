@@ -87,8 +87,6 @@ function activateButton() {
 	}
 }
 
-
-
 (function() {
 	display();
 // Theme changing button
