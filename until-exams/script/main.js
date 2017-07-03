@@ -73,6 +73,20 @@ function switchTheme(theme) {
 	}
 }
 
+function activateButton() {
+	if (!atc_val) {
+		atc_val = true;
+		atc.className = 'active';
+		ct.setAttribute('disabled', 'disabled');
+		localStorage.setItem('autoState', '1');
+	} else {
+		atc_val = false;
+		atc.className = '';
+		ct.removeAttribute('disabled');
+		localStorage.setItem('autoState', '0');
+	}
+}
+
 
 
 (function() {
@@ -84,15 +98,10 @@ function switchTheme(theme) {
 	}, true);
 
 	var atc = document.getElementById('atc');
-	atc.addEventListener('click', function() {
-		if (!atc_val) {
-			atc_val = true;
-			atc.className = 'active';
-			ct.setAttribute('disabled', 'disabled');
-		} else {
-			atc_val = false;
-			atc.className = '';
-			ct.removeAttribute('disabled');
-		}
-	}, true);
+	atc.addEventListener('click', activateButton, true);
+
+	if ( Number(localStorage.getItem('autoState')) )  {
+		activateButton();
+	}
+
 }());
