@@ -63,13 +63,16 @@ function switchTheme(theme) {
 		if (body.classList.contains('light')) {
 			body.className = 'dark';
 			themeColor.setAttribute('content', chromeAndroidColors['dark']);
+			localStorage.setItem('lastTheme', 'dark');
 		} else if (body.classList.contains('dark')) {
 			body.className = 'light';
 			themeColor.setAttribute('content', chromeAndroidColors['light']);
+			localStorage.setItem('lastTheme', 'light');
 		}
 	} else {
 		body.className = color;
 		themeColor.setAttribute('content', chromeAndroidColors[color]);
+		localStorage.setItem('lastTheme', theme);
 	}
 }
 
@@ -88,6 +91,12 @@ function activateButton() {
 }
 
 (function() {
+	var lastTheme = localStorage.getItem('lastTheme') || 'light';
+	switchTheme(lastTheme);
+
+	if ( Number(localStorage.getItem('autoState')) )
+		activateButton();
+
 	display();
 // Theme changing button
 	var ct = document.getElementById('ct');
@@ -97,9 +106,5 @@ function activateButton() {
 
 	var atc = document.getElementById('atc');
 	atc.addEventListener('click', activateButton, true);
-
-	if ( Number(localStorage.getItem('autoState')) )  {
-		activateButton();
-	}
 
 }());
