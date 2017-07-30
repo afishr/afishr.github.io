@@ -80,12 +80,10 @@ function activateButton() {
 	if (!atc_val) {
 		atc_val = true;
 		atc.className = 'active';
-		ct.setAttribute('disabled', 'disabled');
 		localStorage.setItem('autoState', '1');
 	} else {
 		atc_val = false;
 		atc.className = '';
-		ct.removeAttribute('disabled');
 		localStorage.setItem('autoState', '0');
 	}
 }
@@ -102,6 +100,9 @@ function activateButton() {
 	var ct = document.getElementById('ct');
 	ct.addEventListener('click', function() {
 		switchTheme();
+		if (atc_val) {
+			activateButton();
+		}
 	}, true);
 
 	var atc = document.getElementById('atc');
