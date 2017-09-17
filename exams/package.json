@@ -1,0 +1,13 @@
+{
+	"name": "Until-Exams",
+	"version": "1.0.1",
+	"description": "",
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"gulp": "latest",
+		"gulp-clean-css": "latest",
+		"gulp-uglify": "latest",
+		"gulp-htmlmin": "latest",
+	}
+}
