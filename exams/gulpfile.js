@@ -18,7 +18,8 @@ var gulp = require('gulp'),
 		};
 
 /* HTML:Minify */
-gulp.task('html:min', function() {
+gulp.task('html:min', function()
+{
 	gulp.src(path.source.html)
 		// .pipe(replace(/\.{2}\/(?!\.)/ig, ''))
 		.pipe(htmlmin({
